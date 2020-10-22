@@ -13,5 +13,6 @@ typedef struct Chunk {
 } Chunk;
 
 Chunk* chunk_new();
+void chunk_free(Chunk** chunk_ptr);
 
 void chunk_write(Chunk* chunk, uint8_t byte);
