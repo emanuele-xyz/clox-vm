@@ -15,3 +15,4 @@ ValueArray* value_array_new();
 void value_array_free(ValueArray** array_p);
 
 void value_array_write(ValueArray* array, Value value);
+void value_print(Value value);

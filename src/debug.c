@@ -3,7 +3,11 @@
 #include <assert.h>
 #include <stdio.h>
 
+#include "value.h"
+
 static int simple_instruction(const char* name, size_t offset);
+static size_t constant_instruction(char const* name, Chunk const* chunk,
+                                   size_t offset);
 
 void debug_disassemble_chunk(Chunk const* chunk, char const* name)
 {
@@ -27,6 +31,9 @@ size_t debug_disassemble_instruction(Chunk const* chunk, size_t offset)
     uint8_t instruction = chunk->code[offset];
     switch (instruction)
     {
+    case OP_CODE_CONSTANT:
+        return constant_instruction("OP_CONST", chunk, offset);
+
     case OP_CODE_RETURN:
         return simple_instruction("OP_RETURN", offset);
 
@@ -42,4 +49,18 @@ static int simple_instruction(const char* name, size_t offset)
 
     printf("%s\n", name);
     return offset + 1;
+}
+
+static size_t constant_instruction(char const* name, Chunk const* chunk,
+                                   size_t offset)
+{
+    assert(name && ERROR_INVALID("name"));
+    assert(chunk && ERROR_INVALID("chunk"));
+
+    uint8_t constant_offset = chunk->code[offset + 1];
+    printf("%-16s %4d '", name, constant_offset);
+    value_print(chunk->constants->values[constant_offset]);
+    printf("\n");
+
+    return offset + 2;
 }

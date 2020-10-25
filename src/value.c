@@ -1,6 +1,7 @@
 #include "value.h"
 
 #include <assert.h>
+#include <stdio.h>
 
 #include "mem.h"
 
@@ -43,4 +44,9 @@ void value_array_write(ValueArray* array, Value value)
 
     array->values[array->count] = value;
     array->count++;
+}
+
+void value_print(Value value)
+{
+    printf("%g", value);
 }
