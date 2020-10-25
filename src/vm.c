@@ -3,6 +3,7 @@
 #include <stdio.h>
 
 #include "common.h"
+#include "debug.h"
 
 static VMInterpretResult run(void);
 
@@ -30,6 +31,12 @@ static VMInterpretResult run(void)
 {
     for (;;)
     {
+#ifdef DEBUG_TRACE_EXECUTION
+        {
+            size_t offset = (size_t)(vm.ip - vm.chunk->code);
+            debug_disassemble_instruction(vm.chunk, offset);
+        }
+#endif
         uint8_t instruction = READ_BYTE();
         switch (instruction)
         {

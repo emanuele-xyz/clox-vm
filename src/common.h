@@ -5,3 +5,5 @@
 #include <stdint.h>
 
 #include "error.h"
+
+#define DEBUG_TRACE_EXECUTION
