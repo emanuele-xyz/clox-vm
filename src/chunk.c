@@ -7,7 +7,7 @@
 #define CHUNK_DEFAULT_CAPACITY 8
 #define CHUNK_GROW_FACTOR 2
 
-Chunk* chunk_new()
+Chunk* chunk_new(void)
 {
     Chunk* chunk = mem_alloc(1, sizeof(*chunk));
 

@@ -11,7 +11,7 @@ typedef struct ValueArray
     Value* values;
 } ValueArray;
 
-ValueArray* value_array_new();
+ValueArray* value_array_new(void);
 void value_array_free(ValueArray** array_p);
 
 void value_array_write(ValueArray* array, Value value);

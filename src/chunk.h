@@ -17,7 +17,7 @@ typedef struct Chunk
     ValueArray* constants;
 } Chunk;
 
-Chunk* chunk_new();
+Chunk* chunk_new(void);
 void chunk_free(Chunk** chunk_ptr);
 
 void chunk_write(Chunk* chunk, uint8_t byte);

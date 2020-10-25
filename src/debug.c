@@ -5,7 +5,7 @@
 
 #include "value.h"
 
-static int simple_instruction(const char* name, size_t offset);
+static size_t simple_instruction(const char* name, size_t offset);
 static size_t constant_instruction(char const* name, Chunk const* chunk,
                                    size_t offset);
 
@@ -43,7 +43,7 @@ size_t debug_disassemble_instruction(Chunk const* chunk, size_t offset)
     }
 }
 
-static int simple_instruction(const char* name, size_t offset)
+static size_t simple_instruction(const char* name, size_t offset)
 {
     assert(name && ERROR_INVALID("name"));
 
