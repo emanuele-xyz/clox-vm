@@ -5,6 +5,7 @@
 
 typedef enum OpCode
 {
+    OP_CODE_CONSTANT,
     OP_CODE_RETURN,
 } OpCode;
 
