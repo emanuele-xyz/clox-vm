@@ -2,11 +2,13 @@
 
 #include "common.h"
 
-typedef enum OpCode {
+typedef enum OpCode
+{
     OP_CODE_RETURN,
 } OpCode;
 
-typedef struct Chunk {
+typedef struct Chunk
+{
     size_t count;
     size_t capacity;
     uint8_t* code;
