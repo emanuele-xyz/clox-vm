@@ -1,5 +1,5 @@
 CC          := clang
-CFLAGS      := -Wall -Werror -Wextra -Wpedantic
+CFLAGS      := -Wall -Werror -Wextra -Wpedantic -Weverything
 DBG_CFLAGS  := -O0 -g
 RLS_CFLAGS  := -O2
 LDFLAGS     :=
