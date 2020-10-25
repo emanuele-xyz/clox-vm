@@ -5,6 +5,7 @@
 
 #include "value.h"
 
+static void print_line_number(Chunk const* chunk, size_t offset);
 static size_t simple_instruction(const char* name, size_t offset);
 static size_t constant_instruction(char const* name, Chunk const* chunk,
                                    size_t offset);
@@ -28,6 +29,8 @@ size_t debug_disassemble_instruction(Chunk const* chunk, size_t offset)
 
     printf("%04zu ", offset);
 
+    print_line_number(chunk, offset);
+
     uint8_t instruction = chunk->code[offset];
     switch (instruction)
     {
@@ -40,6 +43,18 @@ size_t debug_disassemble_instruction(Chunk const* chunk, size_t offset)
     default:
         printf("Unknown opcode %d\n", instruction);
         return offset + 1;
+    }
+}
+
+static void print_line_number(Chunk const* chunk, size_t offset)
+{
+    if (offset > 0 && chunk->lines[offset] == chunk->lines[offset - 1])
+    {
+        printf("   | ");
+    }
+    else
+    {
+        printf("%4zu ", chunk->lines[offset]);
     }
 }
 
